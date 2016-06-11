@@ -696,6 +696,9 @@ index_nokto_file = $(srcdir)/index.theme-nokto
 # *******************************************
 
 all:
+	$(MKDIR_P) $(srcdir)/gtk-3.18 && \
+	$(MKDIR_P) $(srcdir)/gtk-3.20
+
 	cd $(srcdir)/sass && \
 	bundle exec sass --update --sourcemap=none --watch \
 	3.18/gtk.scss:../gtk-3.18/gtk.css && \
@@ -706,6 +709,8 @@ all:
 	bundle exec sass --update --sourcemap=none --watch \
 	3.20/gtk-dark.scss:../gtk-3.20/gtk-dark.css
 if ENABLE_GTK_NEXT
+	$(MKDIR_P) $(srcdir)/gtk-3.22
+
 	cd $(srcdir)/sass && \
 	bundle exec sass --update --sourcemap=none --watch \
 	3.22/gtk.scss:../gtk-3.22/gtk.css && \
