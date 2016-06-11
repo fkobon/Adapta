@@ -407,15 +407,15 @@ if ENABLE_XFCE
 endif
 
 CLEANFILES = \
-	&(srcdir)/gnome-shell/gnome-shell.css \
-	&(srcdir)/gnome-shell-nokto/gnome-shell.css \
-	&(srcdir)/gnome-shell/extensions/window-list/stylesheet.css \
-	&(srcdir)/gnome-shell/extensions/window-list/classic.css \
-	&(srcdir)/gnome-shell/extensions/workspaces-to-dock/workspaces-to-dock.css \
-	&(srcdir)/gnome-shell/gnome-shell-theme.gresource \
-	&(srcdir)/gnome-shell-nokto/gnome-shell-theme.gresource
+	$(srcdir)/gnome-shell/gnome-shell.css \
+	$(srcdir)/gnome-shell-nokto/gnome-shell.css \
+	$(srcdir)/gnome-shell/extensions/window-list/stylesheet.css \
+	$(srcdir)/gnome-shell/extensions/window-list/classic.css \
+	$(srcdir)/gnome-shell/extensions/workspaces-to-dock/workspaces-to-dock.css \
+	$(srcdir)/gnome-shell/gnome-shell-theme.gresource \
+	$(srcdir)/gnome-shell-nokto/gnome-shell-theme.gresource
 if ENABLE_CINNAMON
 CLEANFILES += \
-	&(srcdir)/cinnamon/cinnamon.css \
-	&(srcdir)/cinnamon-nokto/cinnamon.css
+	$(srcdir)/cinnamon/cinnamon.css \
+	$(srcdir)/cinnamon-nokto/cinnamon.css
 endif
