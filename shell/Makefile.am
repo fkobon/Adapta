@@ -275,6 +275,27 @@ xfce_file = \
 	$(xfcedir)/flat-button.svg \
 	$(xfcedir)/gtkrc
 
+all:
+	cd $(srcdir)/sass && bundle exec sass --update --sourcemap=none --watch \
+		gnome-shell/gnome-shell.scss:../gnome-shell/gnome-shell.css && \
+	bundle exec sass --update --sourcemap=none --watch \
+		gnome-shell/gnome-shell-dark.scss:../gnome-shell-nokto/gnome-shell.css && \
+	bundle exec sass --update --sourcemap=none --watch \
+		gnome-shell/stylesheet.scss:../gnome-shell/extensions/window-list/stylesheet.css && \
+	bundle exec sass --update --sourcemap=none --watch \
+		gnome-shell/classic.scss:../gnome-shell/extensions/window-list/classic.css && \
+	bundle exec sass --update --sourcemap=none --watch \
+		gnome-shell/workspaces-to-dock.scss:../gnome-shell/extensions/workspaces-to-dock/workspaces-to-dock.css
+
+	cd $(srcdir)/sass && ./gnome-shell-theme.gresource.sh
+
+if ENABLE_CINNAMON
+	cd $(srcdir)/sass && bundle exec sass --update --sourcemap=none --watch \
+		cinnamon/cinnamon.scss:../cinnamon/cinnamon.css && \
+	bundle exec sass --update --sourcemap=none --watch \
+		cinnamon/cinnamon-dark.scss:../cinnamon-nokto/cinnamon.css
+endif
+
 install-data-local:
 	$(MKDIR_P) $(adaptadir)/gnome-shell
 	$(MKDIR_P) $(adaptadir)/gnome-shell/assets
@@ -384,3 +405,16 @@ if ENABLE_XFCE
 	test -e $(adaptadir)/xfce-notify-4.0 && \
 		rm -rfv $(adaptadir)/xfce-notify-4.0
 endif
+
+CLEANFILES = \
+	&(srcdir)/gnome-shell/gnome-shell.css \
+	&(srcdir)/gnome-shell-nokto/gnome-shell.css \
+	&(srcdir)/gnome-shell/extensions/window-list/stylesheet.css \
+	&(srcdir)/gnome-shell/extensions/window-list/classic.css \
+	&(srcdir)/gnome-shell/extensions/workspaces-to-dock/workspaces-to-dock.css \
+	&(srcdir)/gnome-shell/gnome-shell-theme.gresource \
+	&(srcdir)/gnome-shell-nokto/gnome-shell-theme.gresource
+if ENABLE_CINNAMON
+CLEANFILES += \
+	&(srcdir)/cinnamon/cinnamon.css \
+	&(srcdir)/cinnamon-nokto/cinnamon.css
