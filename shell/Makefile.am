@@ -418,3 +418,4 @@ if ENABLE_CINNAMON
 CLEANFILES += \
 	&(srcdir)/cinnamon/cinnamon.css \
 	&(srcdir)/cinnamon-nokto/cinnamon.css
+endif
