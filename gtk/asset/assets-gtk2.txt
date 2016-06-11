@@ -67,7 +67,6 @@ Buttons/ltr-button
 Buttons/ltr-button-hover
 Buttons/ltr-button-active
 Buttons/ltr-button-insensitive
-Buttons/rtl-button-insensitive-dark
 Buttons/ltr-button-dark
 Buttons/ltr-button-hover-dark
 Buttons/ltr-button-active-dark
