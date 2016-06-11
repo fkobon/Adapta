@@ -89,7 +89,25 @@ Installation from Git Source
  rm -rf ~/.themes/{Adapta,Adapta-Nokto}
  ```
 
-2. Check `autoconf`, `automake` and `pkg-config` (`pkgconfig`) are installed.
+2. Check build-requirements:
+ Today Adapta bundles neither pre-generated stylesheets nor PNG images.
+ So users and/or contirbutors should generate proper CSSs and PNGs at build-time.
+
+ ```
+ * autoconf
+ * automake
+ * pkg-config (pkgconfig)
+ * libglib-2.0-dev (glib2)  >= 2.48.0
+ * libxml2-utils (libxml2)
+ * ruby-bundler             >= 1.11
+ * ruby-sass                >= 3.4.21
+ * Inkscape
+ ```
+
+ > **Note:**
+ >   * Adapta employs **Gem** generator for SASS/SCSS via `bundle` and `sass`.
+ >   * Adapta uses `inkscape` to generate all of PNG files.
+ >   * Adapta uses `glib-compile-resources` to compile gresource file for Gnome-Shell.
 
 3. Build and install system-wide:
 
@@ -102,7 +120,7 @@ Installation from Git Source
  > **Note:**
  >   * Default prefix is `/usr`
  >   * `Adapta-Nokto` Gtk+ 2.0 dark variant is installed as default
- >   * `make` actually does nothing (for future release)
+ >   * `make` generates proper CSSs and PNGs to be installed.
  >   * `sudo make install` installs multiple versioned theme and Gtk+ automatically selects proper versioned one when running.
 
 4. If users want to disable some DE supports, please pass these specific options to `autogen.sh`:
