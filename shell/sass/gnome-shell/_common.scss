@@ -626,8 +626,7 @@ StScrollBar {
   height: 1.2em;
 }
 
-.popup-menu-boxpointer,
-.candidate-popup-boxpointer {
+.popup-menu-boxpointer {
   -arrow-border-radius: 2px; // FIXME: need more than 2px
   -arrow-background-color: $bg_color; // fake arrows
   -arrow-border-width: 0;
@@ -639,6 +638,23 @@ StScrollBar {
   border-radius: 2px;
   border-top: 1px solid $base_color;
   background-color: $bg_color;
+  box-shadow: $z-depth-3;
+}
+
+.candidate-popup-boxpointer {
+  -arrow-border-radius: 2px;
+  -arrow-background-color: scale-color($osd_bg_color, $alpha: -10%);
+  -arrow-border-width: 0;
+  -arrow-border-color: transparent;
+  -arrow-base: 64px;
+  -arrow-rise: 0;
+  -arrow-box-shadow: none;
+  margin: 0.1em 0.3em 0.5em;
+  border-radius: 2px;
+  border-top: 1px solid transparent;
+  background: transparent; // needs to reset?
+  background-color: scale-color($osd_bg_color, $alpha: -10%);
+  color: $osd_secondary_fg_color;
   box-shadow: $z-depth-3;
 }
 
@@ -2229,9 +2245,10 @@ $legacy_icon_size: 24px;
 }
 
 .candidate-box {
-  transition-duration: 0s;
   padding: 0.3em 0.5em 0.3em 0.5em;
   border-radius: 2px;
+  color: $osd_secondary_fg_color;
+  transition-duration: 0;
   &:hover {
     background-color: $osd_semi_fill_color;
     color: $osd_fg_color;

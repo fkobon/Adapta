@@ -89,6 +89,27 @@ xfwm_file = \
 	$(xfwmdir)/top-right-active.xpm \
 	$(xfwmdir)/top-right-inactive.xpm
 
+all:
+if ENABLE_FLASHBACK
+	cd $(srcdir)/asset && ./clone-assets-metacity.sh
+endif
+
+if ENABLE_CINNAMON
+if !ENABLE_FLASHBACK
+	cd $(srcdir)/asset && ./clone-assets-metacity.sh
+endif
+endif
+
+if ENABLE_UNITY
+if !ENABLE_FLASHBACK
+	cd $(srcdir)/asset && ./clone-assets-metacity.sh
+endif
+endif
+
+if ENABLE_XFCE
+	cd $(srcdir)/asset && ./render-assets-xfwm.sh
+endif
+
 install-data-local:
 if ENABLE_FLASHBACK
 	$(MKDIR_P) $(adaptadir)/metacity-1
@@ -145,4 +166,26 @@ endif
 if ENABLE_XFCE
 	test -e $(noktodir)/xfwm4 && rm -rfv $(noktodir)/xfwm4
 	test -e $(adaptadir)/xfwm4 && rm -rfv $(adaptadir)/xfwm4
+endif
+
+CLEANFILES =
+
+if ENABLE_FLASHBACK
+CLEANFILES += $(metacitydir)/*.svg
+endif
+
+if ENABLE_CINNAMON
+if !ENABLE_FLASHBACK
+CLEANFILES += $(metacitydir)/*.svg
+endif
+endif
+
+if ENABLE_UNITY
+if !ENABLE_FLASHBACK
+CLEANFILES += $(metacitydir)/*.svg
+endif
+endif
+
+if ENABLE_XFCE
+CLEANFILES += $(xfwmdir)/*.png
 endif
