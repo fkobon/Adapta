@@ -121,6 +121,8 @@ Installation from Git Source
  >   * Default prefix is `/usr`
  >   * `Adapta-Nokto` Gtk+ 2.0 dark variant is installed as default
  >   * `make` generates proper CSSs and PNGs to be installed.
+ >     And it will take about 5min to 15min to build,
+ >     for example, Ubuntu's build-server actually does 10min...
  >   * `sudo make install` installs multiple versioned theme and Gtk+ automatically selects proper versioned one when running.
 
 4. If users want to disable some DE supports, please pass these specific options to `autogen.sh`:
