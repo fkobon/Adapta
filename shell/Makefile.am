@@ -287,7 +287,10 @@ all:
 	bundle exec sass --update --sourcemap=none --watch \
 		gnome-shell/workspaces-to-dock.scss:../gnome-shell/extensions/workspaces-to-dock/workspaces-to-dock.css
 
-	cd $(srcdir)/sass && ./gnome-shell-theme.gresource.sh
+	glib-compile-resources --sourcedir=$(shelldir) \
+		$(shelldir)/gnome-shell-theme.gresource.xml
+	glib-compile-resources --sourcedir=$(shellnoktodir) \
+		$(shellnoktodir)/gnome-shell-theme.gresource.xml
 
 if ENABLE_CINNAMON
 	cd $(srcdir)/sass && bundle exec sass --update --sourcemap=none --watch \
