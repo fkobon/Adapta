@@ -1,6 +1,11 @@
-.sass-cache
+.sass-cache/
 *.css.map
 Gemfile.lock
+assets-gtk2/
+assets-gtk3/
+gtk-3.18/
+gtk-3.20/
+gtk-3.22/
 aclocal.m4
 autom4te.cache/
 config.log
