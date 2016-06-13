@@ -696,6 +696,8 @@ index_nokto_file = $(srcdir)/index.theme-nokto
 # *******************************************
 
 all:
+	$(MKDIR_P) $(srcdir)/asset/assets-gtk2 && \
+	$(MKDIR_P) $(srcdir)/asset/assets-gtk3 && \
 	$(MKDIR_P) $(srcdir)/gtk-3.18 && \
 	$(MKDIR_P) $(srcdir)/gtk-3.20
 
