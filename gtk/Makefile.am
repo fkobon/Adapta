@@ -696,8 +696,6 @@ index_nokto_file = $(srcdir)/index.theme-nokto
 # *******************************************
 
 all:
-	$(MKDIR_P) $(srcdir)/asset/assets-gtk2 && \
-	$(MKDIR_P) $(srcdir)/asset/assets-gtk3 && \
 	$(MKDIR_P) $(srcdir)/gtk-3.18 && \
 	$(MKDIR_P) $(srcdir)/gtk-3.20
 
@@ -719,6 +717,9 @@ if ENABLE_GTK_NEXT
 	bundle exec sass --update --sourcemap=none --watch \
 	3.22/gtk-dark.scss:../gtk-3.22/gtk-dark.css
 endif
+	$(MKDIR_P) $(srcdir)/asset/assets-gtk2 && \
+	$(MKDIR_P) $(srcdir)/asset/assets-gtk3
+
 	cd $(srcdir)/asset && \
         ./render-assets-gtk2.sh && \
 	./render-assets-gtk3.sh
