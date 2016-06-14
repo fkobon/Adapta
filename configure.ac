@@ -38,6 +38,7 @@ if test x"$GLIB_COMPILE_RESOURCES" = x; then
 	AC_MSG_ERROR(['glib-compile-resources' not found.])
 fi
 
+ADAPTA_COLOR_SCHEME
 
 AC_CONFIG_FILES([ \
 	Makefile \
@@ -63,6 +64,11 @@ AC_MSG_RESULT([
          sass:                  $SASS
          inkscape:              $INKSCAPE
          glib-compile-resources $GLIB_COMPILE_RESOURCES
+
+         selection-color:       $SELECTION (default: #00BCD4)
+         2nd-selection-color:   $SECOND_SELECTION (default: #4DD0E1)
+         accent-color:          $ACCENT (default: #4DB6AC)
+         suggested-color:       $SUGGESTED (default: #009688)
 
         -----------------------------------------------------------
         | Default DE support

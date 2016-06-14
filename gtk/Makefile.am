@@ -850,7 +850,8 @@ CLEANFILES = \
 	$(srcdir)/asset/assets-gtk2/*/*.svg \
 	$(srcdir)/asset/assets-gtk2/*/*.png \
 	$(srcdir)/asset/assets-gtk3/*.svg \
-	$(srcdir)/asset/assets-gtk3/*.png
+	$(srcdir)/asset/assets-gtk3/*.png \
+	$(srcdir)/sass/common/_custom_colors.scss
 if ENABLE_GTK_NEXT
 CLEANFILES += \
 	$(srcdir)/gtk-3.22/gtk.css \
