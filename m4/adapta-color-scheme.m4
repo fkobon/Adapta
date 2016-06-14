@@ -2,16 +2,21 @@
 # -----------------------------------------------------------
 AC_DEFUN([ADAPTA_COLOR_SCHEME], [
 
-    selection_default="#00BCD4"
-    second_selection_default="#4DD0E1"
-    accent_default="#4DB6AC"
-    suggested_default="#009688"
+    selection_default="`grep 'Cyan500' gtk/sass/common/_colors.scss | \
+                        cut -d' ' -f3`"
+    second_selection_default="`grep 'Cyan300' gtk/sass/common/_colors.scss | \
+                               cut -d' ' -f3`"
+    accent_default="`grep 'Teal300' gtk/sass/common/_colors.scss | \
+                     cut -d' ' -f3`"
+    suggested_default="`grep 'Teal300' gtk/sass/common/_colors.scss | \
+                        cut -d' ' -f3`"
 
     AC_ARG_WITH(
         [selection_color],
         [AS_HELP_STRING(
             [--with-selection_color],
-            [Primary color for selected-items]
+            [Primary color for selected-items \
+             (Default: $selection_default (Cyan500))]
         )],
         [SELECTION="$withval"],
         [SELECTION=$selection_default]
@@ -22,7 +27,8 @@ AC_DEFUN([ADAPTA_COLOR_SCHEME], [
         [second_selection_color],
         [AS_HELP_STRING(
             [--with-second_selection_color],
-            [Primary color for 'select' effects]
+            [Primary color for 'select' effects \
+             (Default: $second_selection_default (Cyan300))]
         )],
         [SECOND_SELECTION="$withval"],
         [SECOND_SELECTION=$second_selection_default]
@@ -33,7 +39,8 @@ AC_DEFUN([ADAPTA_COLOR_SCHEME], [
         [accent_color],
         [AS_HELP_STRING(
             [--with-accent_color],
-            [Secondary color for notifications and OSDs]
+            [Secondary color for notifications and OSDs \
+             (Default: $accent_default (Teal300))]
         )],
         [ACCENT="$withval"],
         [ACCENT=$accent_default]
@@ -44,7 +51,8 @@ AC_DEFUN([ADAPTA_COLOR_SCHEME], [
         [suggested_color],
         [AS_HELP_STRING(
             [--with-suggested_color],
-            [Suggestion color for specific buttons]
+            [Suggestion color for specific buttons \
+             (Default: $suggested_default (Teal500))]
         )],
         [SUGGESTED="$withval"],
         [SUGGESTED=$suggested_default]

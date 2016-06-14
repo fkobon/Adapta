@@ -65,10 +65,10 @@ AC_MSG_RESULT([
          inkscape:              $INKSCAPE
          glib-compile-resources $GLIB_COMPILE_RESOURCES
 
-         selection-color:       $SELECTION (default: #00BCD4)
-         2nd-selection-color:   $SECOND_SELECTION (default: #4DD0E1)
-         accent-color:          $ACCENT (default: #4DB6AC)
-         suggested-color:       $SUGGESTED (default: #009688)
+         selection-color:       $SELECTION (default: $selection_default)
+         2nd-selection-color:   $SECOND_SELECTION (default: $second_selection_default)
+         accent-color:          $ACCENT (default: $accent_default)
+         suggested-color:       $SUGGESTED (default: $suggested_default)
 
         -----------------------------------------------------------
         | Default DE support
