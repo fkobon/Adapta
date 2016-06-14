@@ -8,7 +8,7 @@ AC_DEFUN([ADAPTA_COLOR_SCHEME], [
                                cut -d' ' -f3`"
     accent_default="`grep 'Teal300' gtk/sass/common/_colors.scss | \
                      cut -d' ' -f3`"
-    suggested_default="`grep 'Teal300' gtk/sass/common/_colors.scss | \
+    suggested_default="`grep 'Teal500' gtk/sass/common/_colors.scss | \
                         cut -d' ' -f3`"
 
     AC_ARG_WITH(
