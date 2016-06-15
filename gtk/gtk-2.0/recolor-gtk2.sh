@@ -22,7 +22,7 @@ if [ -e "../sass/common/_key_colors.scss" ]; then
     selection2="`grep 'key_selection' ../sass/common/_key_colors.scss | \
                  cut -d' ' -f2 | cut -d';' -f1`"
 
-    cp -f $SRC_FILE.in $SRC_FILE && $SRC_DARK_FILE.in $SRC_DARK_FILE
+    cp -f $SRC_FILE.in $SRC_FILE && cp -f $SRC_DARK_FILE.in $SRC_DARK_FILE
 
     if [ $selection1 != $selection2 ]; then
         sed -i "s/$selection1/$selection2/g" $SRC_FILE
