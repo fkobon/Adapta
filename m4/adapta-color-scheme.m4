@@ -62,16 +62,16 @@ AC_DEFUN([ADAPTA_COLOR_SCHEME], [
 # Store defined key color-scheme into SCSS file
 echo \
 "// Selection (Primary) color
-\$custom_selection_color: `echo $SELECTION`;
+\$key_selection_color: `echo $SELECTION`;
 
 // Sub-selection-color
-\$custom_secondary_selection_color: `echo $SECOND_SELECTION`;
+\$key_secondary_selection_color: `echo $SECOND_SELECTION`;
 
 // Accent (Seondary) color
-\$custom_accent_color: `echo $ACCENT`;
+\$key_accent_color: `echo $ACCENT`;
 
 // Suggestion color
-\$custom_suggestion_color: `echo $SUGGESTED`;" \
+\$key_suggestion_color: `echo $SUGGESTED`;" \
 > ./gtk/sass/common/_key_colors.scss
 
 # Copy SCSS to shell SASS directory

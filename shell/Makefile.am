@@ -417,7 +417,7 @@ CLEANFILES = \
 	$(srcdir)/gnome-shell/extensions/workspaces-to-dock/workspaces-to-dock.css \
 	$(srcdir)/gnome-shell/gnome-shell-theme.gresource \
 	$(srcdir)/gnome-shell-nokto/gnome-shell-theme.gresource \
-	$(srcdir)/sass/common/_custom_colors.scss
+	$(srcdir)/sass/common/_key_colors.scss
 if ENABLE_CINNAMON
 CLEANFILES += \
 	$(srcdir)/cinnamon/cinnamon.css \
