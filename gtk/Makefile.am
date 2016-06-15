@@ -717,7 +717,7 @@ if ENABLE_GTK_NEXT
 	bundle exec sass --update --sourcemap=none --watch \
 	3.22/gtk-dark.scss:../gtk-3.22/gtk-dark.css
 endif
-	cd $(srcdir)/asset && ./recolor-gtk2.sh
+	cd $(srcdir)/gtk-2.0 && ./recolor-gtk2.sh
 
 	$(MKDIR_P) $(srcdir)/asset/assets-gtk2 && \
 	$(MKDIR_P) $(srcdir)/asset/assets-gtk3
