@@ -17,6 +17,7 @@ ASSETS_DIR="assets-gtk3"
 ASSETS_CLONE_DIR="assets-clone"
 INDEX="assets-gtk3.txt"
 INDEX_CLONE="assets-clone-gtk3.txt"
+KEY_FILE="../sass/common/_key_colors.scss"
 
 # Default colours
 selection1="`grep 'Cyan500' ../sass/common/_colors.scss | \
@@ -42,11 +43,11 @@ render-scale() {
 
 # Check and re-color color-scheme
 if [ -e "../sass/common/_key_colors.scss" ]; then
-    selection2="`grep 'key_selection' ../sass/common/_key_colors.scss | \
+    selection2="`grep 'key_selection' $KEY_FILE | \
                  cut -d' ' -f2 | cut -d';' -f1`"
-    accent2="`grep 'key_accent' ../sass/common/_key_colors.scss | \
+    accent2="`grep 'key_accent' $KEY_FILE | \
               cut -d' ' -f2 | cut -d';' -f1`"
-    suggestion2="`grep 'key_suggestion' ../sass/common/_key_colors.scss | \
+    suggestion2="`grep 'key_suggestion' $KEY_FILE | \
                   cut -d' ' -f2 | cut -d';' -f1`"
 
     cp -f $SRC_FILE.in $SRC_FILE && sleep 1
@@ -71,9 +72,9 @@ fi
 # Generate PNG files
 for i in `cat $INDEX`
 do 
-    if [ -f $ASSETS_DIR/$i.png ] && [ $SRC_FILE -ot $ASSETS_DIR/$i.png ]; then
+    if [ -f $ASSETS_DIR/$i.png ] && [ $KEY_FILE -ot $ASSETS_DIR/$i.png ]; then
         echo $ASSETS_DIR/$i.png exists.
-    elif [ -f $ASSETS_DIR/$i.png ] && [ $SRC_FILE -nt $ASSETS_DIR/$i.png ]; then
+    elif [ -f $ASSETS_DIR/$i.png ] && [ $KEY_FILE -nt $ASSETS_DIR/$i.png ]; then
         echo Re-rendering $ASSETS_DIR/$i.png
         rm -f $ASSETS_DIR/$i.png
         render-non-scale
@@ -82,9 +83,9 @@ do
         render-non-scale
     fi
 
-    if [ -f $ASSETS_DIR/$i@2.png ] && [ $SRC_FILE -ot $ASSETS_DIR/$i@2.png ]; then
+    if [ -f $ASSETS_DIR/$i@2.png ] && [ $KEY_FILE -ot $ASSETS_DIR/$i@2.png ]; then
         echo $ASSETS_DIR/$i@2.png exists.
-    elif [ -f $ASSETS_DIR/$i@2.png ] && [ $SRC_FILE -nt $ASSETS_DIR/$i@2.png ]; then
+    elif [ -f $ASSETS_DIR/$i@2.png ] && [ $KEY_FILE -nt $ASSETS_DIR/$i@2.png ]; then
         echo Re-rendering $ASSETS_DIR/$i@2.png
         rm -f $ASSETS_DIR/$i@2.png
         render-scale
