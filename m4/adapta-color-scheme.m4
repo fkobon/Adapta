@@ -2,13 +2,13 @@
 # -----------------------------------------------------------
 AC_DEFUN([ADAPTA_COLOR_SCHEME], [
 
-    selection_default="`grep 'Cyan500' gtk/sass/common/_colors.scss | \
+    selection_default="`grep 'Cyan500' ./gtk/sass/common/_colors.scss | \
                         cut -d' ' -f3`"
-    second_selection_default="`grep 'Cyan300' gtk/sass/common/_colors.scss | \
+    second_selection_default="`grep 'Cyan300' ./gtk/sass/common/_colors.scss | \
                                cut -d' ' -f3`"
-    accent_default="`grep 'Teal300' gtk/sass/common/_colors.scss | \
+    accent_default="`grep 'Teal300' ./gtk/sass/common/_colors.scss | \
                      cut -d' ' -f3`"
-    suggested_default="`grep 'Teal500' gtk/sass/common/_colors.scss | \
+    suggested_default="`grep 'Teal500' ./gtk/sass/common/_colors.scss | \
                         cut -d' ' -f3`"
 
     AC_ARG_WITH(
@@ -51,7 +51,7 @@ AC_DEFUN([ADAPTA_COLOR_SCHEME], [
         [suggested_color],
         [AS_HELP_STRING(
             [--with-suggested_color],
-            [Suggestion color for specific buttons \
+            [Secondary color for 'suggested' buttons \
              (Default: $suggested_default (Teal500))]
         )],
         [SUGGESTED="$withval"],
@@ -59,7 +59,7 @@ AC_DEFUN([ADAPTA_COLOR_SCHEME], [
     )
     AC_SUBST([SUGGESTED])
 
-# Store defined custom color-scheme into SCSS file
+# Store defined key color-scheme into SCSS file
 echo \
 "// Selection (Primary) color
 \$custom_selection_color: `echo $SELECTION`;
@@ -72,11 +72,11 @@ echo \
 
 // Suggestion color
 \$custom_suggestion_color: `echo $SUGGESTED`;" \
-> ./gtk/sass/common/_custom_colors.scss
+> ./gtk/sass/common/_key_colors.scss
 
-AC_MSG_RESULT([creating sass/common/_custom_colors.scss])
+# Copy SCSS to shell SASS directory
+cp -R ./gtk/sass/common/_key_colors.scss \
+       ./shell/sass/common/_key_colors.scss
 
-# Sync SCSS to shell build-directory
-cp -Rv ./gtk/sass/common/_custom_colors.scss \
-       ./shell/sass/common/_custom_colors.scss
+AC_MSG_RESULT([creating sass/common/_key_colors.scss])
 ])
