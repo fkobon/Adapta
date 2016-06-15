@@ -18,11 +18,41 @@ ASSETS_CLONE_DIR="assets-clone"
 INDEX="assets-gtk2.txt"
 INDEX_CLONE="assets-clone-gtk2.txt"
 
+# Default colours
+selection1="`grep 'Cyan500' ../sass/common/_colors.scss | \
+                    cut -d' ' -f3`"
+accent1="`grep 'Teal300' ../sass/common/_colors.scss | \
+                 cut -d' ' -f3`"
+
+# Renderer
 render-non-scale() {
     ID=`echo $i | tr '/' '_'`
     $INKSCAPE --export-id=$ID \
               --export-png=$ASSETS_DIR/$i.png $SRC_FILE > /dev/null #\
 }
+
+# Check and re-color color-scheme
+# Defined colours
+if [ -e "../sass/common/_key_colors.scss" ]; then
+    selection2="`grep 'key_selection' ../sass/common/_key_colors.scss | \
+                 cut -d' ' -f2 | cut -d';' -f1`"
+    accent2="`grep 'key_accent' ../sass/common/_key_colors.scss | \
+              cut -d' ' -f2 | cut -d';' -f1`"
+
+    cp -f $SRC_FILE.in $SRC_FILE && sleep 1
+
+    if [ $selection1 != $selection2 ]; then
+        sed -i "s/$selection1/$selection2/g" $SRC_FILE
+        echo $selection1 is re-colored with $selection2.
+    fi
+    if [ $accent1 != $accent2 ]; then
+        sed -i "s/$accent1/$accent2/g" $SRC_FILE
+        echo $accent1 is re-colored with $accent2.
+    fi
+else
+    echo _key_colors.scss was not found. Stopped...
+    exit 1
+fi
 
 # Generate PNG files
 for i in `cat $INDEX`
