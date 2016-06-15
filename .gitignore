@@ -13,7 +13,10 @@ colors.rc
 colors-dark.rc
 gnome-shell-theme.gresource
 metacity-1/*.svg
+button_close_pressed.svg
 xfwm4/*.png
+button-pressed.svg
+menu-pressed.svg
 aclocal.m4
 autom4te.cache
 config.log
