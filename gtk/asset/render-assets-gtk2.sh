@@ -32,7 +32,6 @@ render-non-scale() {
 }
 
 # Check and re-color color-scheme
-# Defined colours
 if [ -e "../sass/common/_key_colors.scss" ]; then
     selection2="`grep 'key_selection' ../sass/common/_key_colors.scss | \
                  cut -d' ' -f2 | cut -d';' -f1`"
