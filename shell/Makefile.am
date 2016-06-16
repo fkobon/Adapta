@@ -303,6 +303,9 @@ if ENABLE_CINNAMON
 		cinnamon/cinnamon-dark.scss:../cinnamon-nokto/cinnamon.css
 endif
 
+	$(MKDIR_P) $(srcdir)/unity
+	cd $(srcdir)/asset && ./clone-assets-unity.sh
+
 # *****************
 # * Install files *
 # *****************
@@ -438,6 +441,13 @@ if ENABLE_CINNAMON
 CLEANFILES += \
 	$(srcdir)/cinnamon/cinnamon.css \
 	$(srcdir)/cinnamon-nokto/cinnamon.css
+endif
+if ENABLE_UNITY
+CLEANFILES += \
+	$(srcdir)/unity/*.svg \
+	$(srcdir)/asset/assets-unity/close_focused_pressed.svg \
+	$(srcdir)/asset/assets-unity/progress_bar_fill.svg \
+	$(srcdir)/asset/assets-unity/progress_bar_trough.svg
 endif
 
 DISTCLEANFILES = \
