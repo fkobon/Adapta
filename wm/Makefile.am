@@ -89,6 +89,10 @@ xfwm_file = \
 	$(xfwmdir)/top-right-active.png \
 	$(xfwmdir)/top-right-inactive.png
 
+# *******************************************
+# * Generate PNG images and clone SVG files *
+# *******************************************
+
 all:
 if ENABLE_FLASHBACK
 	cd $(srcdir)/asset && ./clone-assets-metacity.sh
@@ -109,6 +113,10 @@ endif
 if ENABLE_XFCE
 	cd $(srcdir)/asset && ./render-assets-xfwm.sh
 endif
+
+# *****************
+# * Install files *
+# *****************
 
 install-data-local:
 if ENABLE_FLASHBACK
@@ -143,6 +151,10 @@ if ENABLE_XFCE
 	ln -sf ../Adapta/xfwm4 $(noktodir)/xfwm4
 endif
 
+# *******************
+# * Uninstall files *
+# *******************
+
 uninstall-local:
 if ENABLE_FLASHBACK
 	test -e $(noktodir)/metacity-1 && rm -rfv $(noktodir)/metacity-1
@@ -167,6 +179,10 @@ if ENABLE_XFCE
 	test -e $(noktodir)/xfwm4 && rm -rfv $(noktodir)/xfwm4
 	test -e $(adaptadir)/xfwm4 && rm -rfv $(adaptadir)/xfwm4
 endif
+
+# ****************************
+# * Clean up generated files *
+# ****************************
 
 CLEANFILES =
 
@@ -198,3 +214,6 @@ CLEANFILES += \
 	$(srcdir)/asset/assets-xfwm/close-pressed.svg \
 	$(srcdir)/asset/assets-xfwm/menu-pressed.svg
 endif
+
+DISTCLEANFILES = \
+	$(CLEANFILES)

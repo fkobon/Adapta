@@ -275,6 +275,10 @@ xfce_file = \
 	$(xfcedir)/flat-button.svg \
 	$(xfcedir)/gtkrc
 
+# ****************************
+# * Generate CSS stylesheets *
+# ****************************
+
 all:
 	cd $(srcdir)/sass && bundle exec sass --update --sourcemap=none --watch \
 		gnome-shell/gnome-shell.scss:../gnome-shell/gnome-shell.css && \
@@ -298,6 +302,10 @@ if ENABLE_CINNAMON
 	bundle exec sass --update --sourcemap=none --watch \
 		cinnamon/cinnamon-dark.scss:../cinnamon-nokto/cinnamon.css
 endif
+
+# *****************
+# * Install files *
+# *****************
 
 install-data-local:
 	$(MKDIR_P) $(adaptadir)/gnome-shell
@@ -388,6 +396,10 @@ if ENABLE_XFCE
 	ln -sf ../Adapta/xfce-notify-4.0 $(noktodir)/xfce-notify-4.0
 endif
 
+# *******************
+# * Uninstall files *
+# *******************
+
 uninstall-local:
 	test -e $(noktodir)/gnome-shell && rm -rfv $(noktodir)/gnome-shell
 	test -e $(adaptadir)/gnome-shell && rm -rfv $(adaptadir)/gnome-shell
@@ -409,6 +421,10 @@ if ENABLE_XFCE
 		rm -rfv $(adaptadir)/xfce-notify-4.0
 endif
 
+# ****************************
+# * Clean up generated files *
+# ****************************
+
 CLEANFILES = \
 	$(srcdir)/gnome-shell/gnome-shell.css \
 	$(srcdir)/gnome-shell-nokto/gnome-shell.css \
@@ -423,3 +439,6 @@ CLEANFILES += \
 	$(srcdir)/cinnamon/cinnamon.css \
 	$(srcdir)/cinnamon-nokto/cinnamon.css
 endif
+
+DISTCLEANFILES = \
+	$(CLEANFILES)

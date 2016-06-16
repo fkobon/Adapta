@@ -723,7 +723,7 @@ endif
 	$(MKDIR_P) $(srcdir)/asset/assets-gtk3
 
 	cd $(srcdir)/asset && \
-        ./render-assets-gtk2.sh && \
+	./render-assets-gtk2.sh && \
 	./render-assets-gtk3.sh
 
 # *****************
@@ -824,6 +824,10 @@ if ENABLE_GTK_NEXT
 	ln -sf ../Adapta/gtk-3.22 $(noktodir)/gtk-3.22
 endif
 
+# *******************
+# * Uninstall files *
+# *******************
+
 uninstall-local:
 	test -e $(noktodir)/index.theme && rm -rfv $(noktodir)/index.theme
 	test -e $(noktodir)/gtk-3.0 && rm -rfv $(noktodir)/gtk-3.0
@@ -840,9 +844,9 @@ if ENABLE_GTK_NEXT
 	test -e $(adaptadir)/gtk-3.22 && rm -rfv $(adaptadir)/gtk-3.22
 endif
 
-# **************************
-# * Clean generated files *
-# **************************
+# ****************************
+# * Clean up generated files *
+# ****************************
 
 CLEANFILES = \
 	$(srcdir)/gtk-3.18/gtk.css \
@@ -863,3 +867,6 @@ CLEANFILES += \
 	$(srcdir)/gtk-3.22/gtk.css \
 	$(srcdir)/gtk-3.22/gtk-dark.css
 endif
+
+DISTCLEANFILES = \
+	$(CLEANFILES)
