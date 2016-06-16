@@ -291,6 +291,13 @@ all:
 	bundle exec sass --update --sourcemap=none --watch \
 		gnome-shell/workspaces-to-dock.scss:../gnome-shell/extensions/workspaces-to-dock/workspaces-to-dock.css
 
+	$(MKDIR_P) $(srcdir)/gnome-shell/assets
+	$(MKDIR_P) $(srcdir)/gnome-shell/assets/dot
+	$(MKDIR_P) $(srcdir)/gnome-shell/extensions//workspaces-to-dock/assets
+	$(MKDIR_P) $(srcdir)/gnome-shell-nokto/assets
+	$(MKDIR_P) $(srcdir)/gnome-shell-nokto/assets/dot
+	cd $(srcdir)/asset && ./clone-assets-gnome-shell.sh
+
 	glib-compile-resources --sourcedir=$(shelldir) \
 		$(shelldir)/gnome-shell-theme.gresource.xml
 	glib-compile-resources --sourcedir=$(shellnoktodir) \
@@ -442,7 +449,31 @@ CLEANFILES = \
 	$(srcdir)/gnome-shell/extensions/workspaces-to-dock/workspaces-to-dock.css \
 	$(srcdir)/gnome-shell/gnome-shell-theme.gresource \
 	$(srcdir)/gnome-shell-nokto/gnome-shell-theme.gresource \
-	$(srcdir)/sass/common/_key_colors.scss
+	$(srcdir)/gnome-shell/*.svg \
+	$(srcdir)/gnome-shell/*.png \
+	$(srcdir)/gnome-shell/assets/*.svg \
+	$(srcdir)/gnome-shell/assets/dot/*.svg \
+	$(srcdir)/gnome-shell/extensions/workspaces-to-dock/assets/*.svg \
+	$(srcdir)/gnome-shell-nokto/*.svg \
+	$(srcdir)/gnome-shell-nokto/*.png \
+	$(srcdir)/gnome-shell-nokto/assets/*.svg \
+	$(srcdir)/gnome-shell-nokto/assets/dot/*.svg \
+	$(srcdir)/sass/common/_key_colors.scss \
+	$(srcdir)/asset/assets-gnome-shell/common/toggle-on-hover.svg \
+	$(srcdir)/asset/assets-gnome-shell/common/toggle-on.svg \
+	$(srcdir)/asset/assets-gnome-shell/common/checkbox-hover.svg \
+	$(srcdir)/asset/assets-gnome-shell/common/checkbox.svg \
+	$(srcdir)/asset/assets-gnome-shell/common/corner-ripple-ltr.svg \
+	$(srcdir)/asset/assets-gnome-shell/common/corner-ripple-rtl.svg \
+	$(srcdir)/asset/assets-gnome-shell/common/dash-placeholder.svg \
+	$(srcdir)/asset/assets-gnome-shell/common/go-down.svg \
+	$(srcdir)/asset/assets-gnome-shell/common/go-up.svg \
+	$(srcdir)/asset/assets-gnome-shell/common/media-control-active.svg \
+	$(srcdir)/asset/assets-gnome-shell/common/media-control-hover.svg \
+	$(srcdir)/asset/assets-gnome-shell/common/more-results.svg \
+	$(srcdir)/asset/assets-gnome-shell/common/window-close-active.svg \
+	$(srcdir)/asset/assets-gnome-shell/dot/*.svg \
+	$(srcdir)/asset/assets-gnome-shell/workspaces-to-dock/*.svg
 if ENABLE_CINNAMON
 CLEANFILES += \
 	$(srcdir)/cinnamon/cinnamon.css \
