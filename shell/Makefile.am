@@ -459,7 +459,7 @@ if ENABLE_XFCE
 CLEANFILES += \
 	$(srcdir)/xfce-notify-4.0/*.svg \
 	$(srcdir)/asset/assets-xfce/flat-button-active.svg \
-	$(srcdir)/asset/assets-unity/flat-button-hover.svg
+	$(srcdir)/asset/assets-xfce/flat-button-hover.svg
 endif
 
 DISTCLEANFILES = \
