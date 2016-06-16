@@ -303,8 +303,14 @@ if ENABLE_CINNAMON
 		cinnamon/cinnamon-dark.scss:../cinnamon-nokto/cinnamon.css
 endif
 
+if ENABLE_UNITY
 	$(MKDIR_P) $(srcdir)/unity
 	cd $(srcdir)/asset && ./clone-assets-unity.sh
+endif
+
+if ENABLE_XFCE
+	cd $(srcdir)/asset && ./clone-assets-xfce.sh
+endif
 
 # *****************
 # * Install files *
@@ -448,6 +454,12 @@ CLEANFILES += \
 	$(srcdir)/asset/assets-unity/close_focused_pressed.svg \
 	$(srcdir)/asset/assets-unity/progress_bar_fill.svg \
 	$(srcdir)/asset/assets-unity/progress_bar_trough.svg
+endif
+if ENABLE_XFCE
+CLEANFILES += \
+	$(srcdir)/xfce-notify-4.0/*.svg \
+	$(srcdir)/asset/assets-xfce/flat-button-active.svg \
+	$(srcdir)/asset/assets-unity/flat-button-hover.svg
 endif
 
 DISTCLEANFILES = \
