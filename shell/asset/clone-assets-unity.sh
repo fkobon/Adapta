@@ -63,10 +63,10 @@ do
         elif [ -f $ASSETS_DIR/$s.svg ] && \
             [ $SRC_DIR/$s.svg -nt $ASSETS_DIR/$s.svg ]; then
             echo Re-cloning $ASSETS_DIR/$s.svg
-            cp $SRC_DIR/$s.svg $ASSETS_DIR/
+            cp $SRC_DIR/$s.svg $ASSETS_DIR
         else
             echo Cloning $ASSETS_DIR/$s.svg
-            cp $SRC_DIR/$s.svg $ASSETS_DIR/
+            cp $SRC_DIR/$s.svg $ASSETS_DIR
         fi
     else
         src="`echo $i | cut -d' ' -f3`"

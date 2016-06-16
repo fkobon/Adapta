@@ -21,9 +21,9 @@ KEY_FILE="../sass/common/_key_colors.scss"
 
 # Default colours
 selection1="`grep 'Cyan500' ../sass/common/_colors.scss | \
-                    cut -d' ' -f3`"
+                   cut -d' ' -f3`"
 accent1="`grep 'Teal300' ../sass/common/_colors.scss | \
-                 cut -d' ' -f3`"
+                cut -d' ' -f3`"
 suggestion1="`grep 'Teal500' ../sass/common/_colors.scss | \
                     cut -d' ' -f3`"
 
@@ -42,7 +42,7 @@ render-scale() {
 }
 
 # Check and re-color color-scheme
-if [ -e "../sass/common/_key_colors.scss" ]; then
+if [ -e $KEY_FILE ]; then
     selection2="`grep 'key_selection' $KEY_FILE | \
                  cut -d' ' -f2 | cut -d';' -f1`"
     accent2="`grep 'key_accent' $KEY_FILE | \
@@ -70,7 +70,7 @@ else
 fi
 
 # Generate PNG files
-for i in `cat $INDEX`
+for i in $(<$INDEX)
 do 
     if [ -f $ASSETS_DIR/$i.png ] && [ $KEY_FILE -ot $ASSETS_DIR/$i.png ]; then
         echo $ASSETS_DIR/$i.png exists.
@@ -96,13 +96,13 @@ do
 done
 
 # Clone stock SVG files
-for i in `cat $INDEX_CLONE`
+for i in $(<$INDEX_CLONE)
 do
     if [ -f $ASSETS_DIR/$i.svg ]; then
         echo $ASSETS_DIR/$i.svg exists.
     else
         echo Cloning $i.svg into $ASSETS_DIR
-        cp $ASSETS_CLONE_DIR/$i.svg $ASSETS_DIR/
+        cp $ASSETS_CLONE_DIR/$i.svg $ASSETS_DIR
     fi
 done
 

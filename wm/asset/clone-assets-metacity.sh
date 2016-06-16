@@ -18,7 +18,7 @@ KEY_FILE="../../gtk/sass/common/_key_colors.scss"
 
 # Default colours
 selection1="`grep 'Cyan500' ../../gtk/sass/common/_colors.scss | \
-                    cut -d' ' -f3`"
+                   cut -d' ' -f3`"
 
 # Check and re-color 'button_close_pressed' button
 if [ -e $KEY_FILE ]; then
@@ -36,7 +36,7 @@ else
 fi
 
 # Clone stock SVG files
-for i in `cat $INDEX`
+for i in $(<$INDEX)
 do
     if [ -f $ASSETS_DIR/$i.svg ] && \
         [ $SRC_DIR/$i.svg -ot $ASSETS_DIR/$i.svg ]; then
@@ -44,10 +44,10 @@ do
     elif [ -f $ASSETS_DIR/$i.svg ] && \
         [ $SRC_DIR/$i.svg -nt $ASSETS_DIR/$i.svg ]; then
         echo Re-cloning $ASSETS_DIR/$i.svg
-        cp $SRC_DIR/$i.svg $ASSETS_DIR/
+        cp $SRC_DIR/$i.svg $ASSETS_DIR
     else
         echo Cloning $ASSETS_DIR/$i.svg
-        cp $SRC_DIR/$i.svg $ASSETS_DIR/
+        cp $SRC_DIR/$i.svg $ASSETS_DIR
     fi
 done
 

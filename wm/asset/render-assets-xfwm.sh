@@ -21,7 +21,7 @@ KEY_FILE="../../gtk/sass/common/_key_colors.scss"
 
 # Default colours
 selection1="`grep 'Cyan500' ../../gtk/sass/common/_colors.scss | \
-                    cut -d' ' -f3`"
+                   cut -d' ' -f3`"
 # Renderer
 render-non-scale() {
     $INKSCAPE --export-png=$ASSETS_DIR/$i.png $SRC_DIR/$i.svg >/dev/null #\
@@ -45,7 +45,7 @@ else
 fi
 
 # Generate PNG files
-for i in `cat $INDEX`
+for i in $(<$INDEX)
 do 
     if [ -f $ASSETS_DIR/$i.png ] && \
         [ $SRC_DIR/$i.svg -ot $ASSETS_DIR/$i.png ]; then

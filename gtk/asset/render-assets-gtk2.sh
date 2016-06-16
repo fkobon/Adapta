@@ -21,9 +21,9 @@ KEY_FILE="../sass/common/_key_colors.scss"
 
 # Default colours
 selection1="`grep 'Cyan500' ../sass/common/_colors.scss | \
-                    cut -d' ' -f3`"
+                   cut -d' ' -f3`"
 accent1="`grep 'Teal300' ../sass/common/_colors.scss | \
-                 cut -d' ' -f3`"
+                cut -d' ' -f3`"
 
 # Renderer
 render-non-scale() {
@@ -33,7 +33,7 @@ render-non-scale() {
 }
 
 # Check and re-color color-scheme
-if [ -e "../sass/common/_key_colors.scss" ]; then
+if [ -e $KEY_FILE ]; then
     selection2="`grep 'key_selection' $KEY_FILE | \
                  cut -d' ' -f2 | cut -d';' -f1`"
     accent2="`grep 'key_accent' $KEY_FILE | \
@@ -55,7 +55,7 @@ else
 fi
 
 # Generate PNG files
-for i in `cat $INDEX`
+for i in $(<$INDEX)
 do
     SUB_DIR=`echo $i | cut -f1 -d '/'`
     if [ '!' -d $ASSETS_DIR/$SUB_DIR ]; then
@@ -75,7 +75,7 @@ do
 done
 
 # Clone stock SVG files
-for i in `cat $INDEX_CLONE`
+for i in $(<$INDEX_CLONE)
 do
     case $i in
     "null" )
