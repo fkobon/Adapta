@@ -37,17 +37,17 @@ do
     r="`echo $i | cut -d' ' -f3`" # recolor flag
 
     if [ "$r" = "r1" ]; then
-        cp $SRC_DIR/$s.in $SRC_DIR/$s
+        cp -f $SRC_DIR/$s.in $SRC_DIR/$s
 
         if [ $selection1 != $selection2 ]; then
-            sed -i "s/$selection1/$selection2/g" $s
+            sed -i "s/$selection1/$selection2/g" $SRC_DIR/$s
             echo $s is re-colored with $selection2.
         fi
     elif [ "$r" = "r2" ]; then
-        cp $SRC_DIR/$s.in $SRC_DIR/$s
+        cp -f $SRC_DIR/$s.in $SRC_DIR/$s
 
         if [ $accent1 != $accent2 ]; then
-            sed -i "s/$accent1/$accent2/g" $s
+            sed -i "s/$accent1/$accent2/g" $SRC_DIR/$s
             echo $s is re-colored with $accent2.
         fi
     fi
