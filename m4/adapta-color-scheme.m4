@@ -8,8 +8,8 @@ AC_DEFUN([ADAPTA_COLOR_SCHEME], [
                                cut -d' ' -f3`"
     accent_default="`grep 'Teal300' ./gtk/sass/common/_colors.scss | \
                      cut -d' ' -f3`"
-    suggested_default="`grep 'Teal500' ./gtk/sass/common/_colors.scss | \
-                        cut -d' ' -f3`"
+    suggestion_default="`grep 'Teal500' ./gtk/sass/common/_colors.scss | \
+                         cut -d' ' -f3`"
 
     AC_ARG_WITH(
         [selection_color],
@@ -48,16 +48,16 @@ AC_DEFUN([ADAPTA_COLOR_SCHEME], [
     AC_SUBST([ACCENT])
 
     AC_ARG_WITH(
-        [suggested_color],
+        [suggestion_color],
         [AS_HELP_STRING(
-            [--with-suggested_color],
+            [--with-suggestion_color],
             [Secondary color for 'suggested' buttons \
              (Default: #009688 (Teal500))]
         )],
-        [SUGGESTED="$withval"],
-        [SUGGESTED=$suggested_default]
+        [SUGGESTION="$withval"],
+        [SUGGESTION=$suggestion_default]
     )
-    AC_SUBST([SUGGESTED])
+    AC_SUBST([SUGGESTION])
 
 # Store defined key color-scheme into SCSS file
 echo \
@@ -71,7 +71,7 @@ echo \
 \$key_accent_color: `echo $ACCENT`;
 
 // Suggestion color
-\$key_suggestion_color: `echo $SUGGESTED`;" \
+\$key_suggestion_color: `echo $SUGGESTION`;" \
 > ./gtk/sass/common/_key_colors.scss
 
 # Copy SCSS to shell SASS directory
