@@ -161,7 +161,9 @@ Installation from Git Source
  >     And uppercases are strongly recommended in Adapta code-base.
  >   * Material Desing Color Palette is here: [External Link](https://www.google.com/design/spec/style/color.html#color-color-palette)
  >   * Example) If you would like to use 'Teal500' as selection_color, try this:
- >     `./autogen.sh --with-selection_color=#009688 --with-second_selection_color=#4DB6AC`
+ >
+ >     ```./autogen.sh --with-selection_color=#009688 --with-second_selection_color=#4DB6AC```
+ >
  >     This can switch to almost-Teal key colors.
  >   * Basically `selection_color` and `suggestion_color` should be with `500` colors,
  >     and `second_selection_color` and `accent_color` should be with `300` colors.
