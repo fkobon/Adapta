@@ -10,10 +10,10 @@
 # (at your option) any later version.
 #
 
-SRC_DIR="assets-gnome-shell"
-ASSETS_DIR="../gnome-shell"
-ASSETS_DARK_DIR="../gnome-shell-nokto"
-INDEX="assets-gnome-shell.txt"
+SRC_DIR="assets-cinnamon"
+ASSETS_DIR="../cinnamon/assets"
+ASSETS_DARK_DIR="../cinnamon-nokto/assets"
+INDEX="assets-cinnamon.txt"
 KEY_FILE="../../gtk/sass/common/_key_colors.scss"
 
 # Default colours
@@ -33,8 +33,8 @@ IFS=$'
 '
 for i in $(<$INDEX)
 do
-    s="`echo $i | cut -d' ' -f1`" # source
-    r="`echo $i | cut -d' ' -f3`" # recolor flag
+    s="`echo $i | cut -d' ' -f1`.svg" # source
+    r="`echo $i | cut -d' ' -f2`" # recolor flag
 
     if [ "$r" = "r1" ]; then
         cp -f $SRC_DIR/$s.in $SRC_DIR/$s
@@ -64,12 +64,12 @@ IFS=$'
 '
 for i in $(<$INDEX)
 do
-    s="`echo $i | cut -d' ' -f1`"                     # source
-    f="`echo $i | cut -d'.' -f1 | cut -d'/' -f2`.svg" # file name
+    s="`echo $i | cut -d' ' -f1`.svg"                 # source
+    f="`echo $i | cut -d' ' -f1 | cut -d'/' -f3`.svg" # file name
     v="`echo $i | cut -c1`"                           # variant type
-    d="`echo $i | cut -d' ' -f2`"                     # target directory
+    d="`echo $i | cut -d'/' -f2`"                     # target directory
 
-    if [ $v = "c" ] || [ $v = "d" ]; then # 'commmon'
+    if [ $v = "c" ]; then # 'commmon'
         if [ -f $ASSETS_DIR/$d/$f ] && \
             [ $SRC_DIR/$s -ot $ASSETS_DIR/$d/$f ]; then
             echo $ASSETS_DIR/$d/$f exists.
@@ -80,19 +80,13 @@ do
             cp $SRC_DIR/$s $ASSETS_DIR/$d/$f
             echo Re-cloning $ASSETS_DARK_DIR/$d/$f
             cp $SRC_DIR/$s $ASSETS_DAKR_DIR/$d/$f
-        elif [ $i = "common/noise-texture.png ." ]; then # PNG special case
-            f="`echo $i | cut -d'.' -f1 | cut -d'/' -f2`.png"
-            echo Cloning $ASSETS_DIR/$d/$f
-            cp $SRC_DIR/$s $ASSETS_DIR/$d/$f
-            echo Cloning $ASSETS_DARK_DIR/$d/$f
-            cp $SRC_DIR/$s $ASSETS_DARK_DIR/$d/$f
         else
             echo Cloning $ASSETS_DIR/$d/$f
             cp $SRC_DIR/$s $ASSETS_DIR/$d/$f
             echo Cloning $ASSETS_DARK_DIR/$d/$f
             cp $SRC_DIR/$s $ASSETS_DARK_DIR/$d/$f
         fi
-    elif [ $v = "l" ] || [ $v = "w" ]; then # 'light'
+    elif [ $v = "l" ]; then # 'light'
         if [ -f $ASSETS_DIR/$d/$f ] && \
             [ $SRC_DIR/$s -ot $ASSETS_DIR/$d/$f ]; then
             echo $ASSETS_DIR/$d/$f exists.

@@ -308,6 +308,20 @@ if ENABLE_CINNAMON
 		cinnamon/cinnamon.scss:../cinnamon/cinnamon.css && \
 	bundle exec sass --update --sourcemap=none --watch \
 		cinnamon/cinnamon-dark.scss:../cinnamon-nokto/cinnamon.css
+
+	$(MKDIR_P) $(srcdir)/cinnamon/assets
+	$(MKDIR_P) $(srcdir)/cinnamon/assets/checkbox
+	$(MKDIR_P) $(srcdir)/cinnamon/assets/menu
+	$(MKDIR_P) $(srcdir)/cinnamon/assets/misc
+	$(MKDIR_P) $(srcdir)/cinnamon/assets/panel
+	$(MKDIR_P) $(srcdir)/cinnamon/assets/switch
+	$(MKDIR_P) $(srcdir)/cinnamon-nokto/assets
+	$(MKDIR_P) $(srcdir)/cinnamon-nokto/assets/checkbox
+	$(MKDIR_P) $(srcdir)/cinnamon-nokto/assets/menu
+	$(MKDIR_P) $(srcdir)/cinnamon-nokto/assets/misc
+	$(MKDIR_P) $(srcdir)/cinnamon-nokto/assets/panel
+	$(MKDIR_P) $(srcdir)/cinnamon-nokto/assets/switch
+	cd $(srcdir)/asset && ./clone-assets-cinnamon.sh
 endif
 
 if ENABLE_UNITY
@@ -477,7 +491,19 @@ CLEANFILES = \
 if ENABLE_CINNAMON
 CLEANFILES += \
 	$(srcdir)/cinnamon/cinnamon.css \
-	$(srcdir)/cinnamon-nokto/cinnamon.css
+	$(srcdir)/cinnamon-nokto/cinnamon.css \
+	$(srcdir)/cinnamon/assets/*/*.svg \
+	$(srcdir)/cinnamon-nokto/assets/*/*.svg \
+	$(srcdir)/asset/assets-cinnamon/common/checkbox/*.svg \
+	$(srcdir)/asset/assets-cinnamon/common/misc/add-workspace-active.svg \
+	$(srcdir)/asset/assets-cinnamon/common/misc/close-active.svg \
+	$(srcdir)/asset/assets-cinnamon/common/misc/corner-ripple.svg \
+	$(srcdir)/asset/assets-cinnamon/common/panel/activities-active.svg \
+	$(srcdir)/asset/assets-cinnamon/common/panel/window-list-active-bottom.svg \
+	$(srcdir)/asset/assets-cinnamon/common/panel/window-list-active-top.svg \
+	$(srcdir)/asset/assets-cinnamon/common/switch/switch-on.svg \
+	$(srcdir)/asset/assets-cinnamon/light/message.svg \
+	$(srcdir)/asset/assets-cinnamon/nokto/message.svg
 endif
 if ENABLE_UNITY
 CLEANFILES += \
