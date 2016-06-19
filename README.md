@@ -147,6 +147,27 @@ Installation from Git Source
  > **Note:**
  >   * As default, Gtk+ 3.21.x support is disabled.
 
+6. If users want to change default 4 **Key-Colors**, please pass these options:
+
+ ```
+ --with-selection_color        Primary color for 'selected-items' (Default: #00BCD4 = Cyan500)
+ --with-second_selection_color Primary color for 'select' effects (Default: #4DD0E1 = Cyan300)
+ --with-accent_color           Secondary color for notifications and OSDs (Default: #4DB6AC = Teal300)
+ --with-suggestion_color       Secondary color for 'suggested' buttons (Default: #009688 = Teal500)
+ ```
+
+ > **Note:**
+ >   * Color-codes are defined as `# + 6 HEX`s (Standard RGB definitions in HTML codes).
+ >     And uppercases are strongly recommended in Adapta code-base.
+ >   * Material Desing Color Palette is here: [External Link](https://www.google.com/design/spec/style/color.html#color-color-palette)
+ >   * Example) If you would like to use 'Teal500' as selection_color, try this:
+ >     `./autogen.sh --with-selection_color=#009688 --with-second_selection_color=#4DB6AC`
+ >     This can switch to almost-Teal key colors.
+ >   * Basically `selection_color` and `suggestion_color` should be with `500` colors,
+ >     and `second_selection_color` and `accent_color` should be with `300` colors.
+ >   * While doing `make`, Adapta changes those 4 colors in all stylesheets and images,
+ >     and `make clean` cleans up all generated files from source directories.
+
 Extra Browser Support
 ---------------------
  If users want to try experimental browser specific theming, please pass this option:
