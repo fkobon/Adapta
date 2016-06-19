@@ -502,8 +502,8 @@ CLEANFILES += \
 	$(srcdir)/asset/assets-cinnamon/common/panel/window-list-active-bottom.svg \
 	$(srcdir)/asset/assets-cinnamon/common/panel/window-list-active-top.svg \
 	$(srcdir)/asset/assets-cinnamon/common/switch/switch-on.svg \
-	$(srcdir)/asset/assets-cinnamon/light/message.svg \
-	$(srcdir)/asset/assets-cinnamon/nokto/message.svg
+	$(srcdir)/asset/assets-cinnamon/light/misc/message.svg \
+	$(srcdir)/asset/assets-cinnamon/nokto/misc/message.svg
 endif
 if ENABLE_UNITY
 CLEANFILES += \
