@@ -65,7 +65,7 @@ Installation from PPA (Ubuntu 16.04 LTS and 16.10)
  sudo apt install adapta-gtk-theme
  ```
 
-2. select `Adapta` or `Adapta-Nokto` via Gnome-Tweak-Tool.
+2. select `Adapta` or `Adapta-Nokto` via proper tools.
 
  > **Note:**
  >
